@@ -1,5 +1,5 @@
 {
-    "name": "tenantcloud/command-logger",
+    "name": "kwxs/command-logger",
     "description": "Laravel package for saving command log information",
     "license": "MIT",
     "authors": [
