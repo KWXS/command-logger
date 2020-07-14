@@ -4,6 +4,7 @@
 namespace TenantCloud\CommandLogger\Channels;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 /**
  * Class DbChannel
@@ -34,11 +35,9 @@ class DbChannel implements ChannelContract
 		$table = config('commandlogger.db_table');
 
 		// check if table was created. For the first php artisan migrate command.
-		// Added try catch if DB connection was not established
 		try {
 			if (Schema::hasTable($table)) {
 				DB::table($table)->insert($data);
 			}
 		} catch (\Exception $e) {}
-	}
 }
