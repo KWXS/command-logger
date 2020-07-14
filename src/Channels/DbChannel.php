@@ -35,8 +35,9 @@ class DbChannel implements ChannelContract
 		$table = config('commandlogger.db_table');
 
 		// check if table was created. For the first php artisan migrate command.
-		if (Schema::hasTable($table)) {
-			DB::table($table)->insert($data);
-		}
-	}
+		try {
+			if (Schema::hasTable($table)) {
+				DB::table($table)->insert($data);
+			}
+		} catch (\Exception $e) {}
 }
